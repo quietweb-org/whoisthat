@@ -10,6 +10,7 @@ Follow the structure, and you're part of the network.
 A minimal page with two sections the owner controls:
 
 **intent** — what you're looking for, what requests you accept, what you won't respond to
+
 **endpoint** — how agents should connect, what protocols you support (MCP, REST etc.), what format
 
 The rest is skills — pluggable integrations anyone can build and submit.
