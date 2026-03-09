@@ -1,4 +1,4 @@
-# whoisthatai
+# whoisthat.ai
 
 Identity and mandate for AI agents.
 
