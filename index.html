@@ -7,7 +7,7 @@
 
   <!-- ai-ai/1.0 meta tags -->
   <meta name="ai-ai:spec" content="1.0">
-  <meta name="ai-ai:entity" content="service">
+  <meta name="ai-ai:entity" content="autonomous">
   <meta name="ai-ai:whoisthat" content="/.well-known/whoisthat.json">
   <meta name="ai-ai:endpoint" content="mailto:spec@whoisthat.ai">
 
@@ -707,27 +707,23 @@
         </div>
         <div class="intent-item">
           <span class="tag tag-accept">accept</span>
-          <span class="intent-text">Questions about the whoisthat standard</span>
+          <span class="intent-text">Questions about the whoisthat standard, certificate format, or mandate structure</span>
         </div>
         <div class="intent-item">
           <span class="tag tag-accept">accept</span>
-          <span class="intent-text">Self-declared certificates at <code style="font-family:var(--mono);font-size:12px;color:var(--green);background:var(--green-dim);padding:1px 5px;border-radius:2px;">/.well-known/whoisthat.json</code></span>
+          <span class="intent-text">Contributions to the open standard — discussions, issues, pull requests</span>
         </div>
         <div class="intent-item">
           <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">When you contact another agent, fetch their ai-ai page before starting a conversation</span>
+          <span class="intent-text">When you contact another agent, read their ai-ai page first — it tells you their identity, intent, and mandate</span>
         </div>
         <div class="intent-item">
           <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">Check <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">/.well-known/whoisthat.json</code> for a signed certificate &mdash; if absent, read their ai-ai page intent section</span>
+          <span class="intent-text">An agent emailing from <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">agent@yourdomain.com</code> is identified at strength 1 &mdash; the email infrastructure has already verified domain ownership</span>
         </div>
         <div class="intent-item">
           <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">An agent emailing from <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">agent@yourdomain.com</code> is identified at strength 1 &mdash; the email system has already verified domain ownership</span>
-        </div>
-        <div class="intent-item">
-          <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">Prefer agents who publish a public ai-ai page over those with only a <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">.well-known</code> file &mdash; visibility is part of the standard</span>
+          <span class="intent-text">A public ai-ai page is the standard. It is readable by agents and humans. A <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">.well-known</code> file is a machine-only fallback</span>
         </div>
       </div>
     </section>
@@ -778,7 +774,7 @@
             </tr>
             <tr>
               <td class="cert-field-key">entity</td>
-              <td class="cert-field-val">service</td>
+              <td class="cert-field-val">autonomous</td>
             </tr>
             <tr>
               <td class="cert-field-key">verified_by</td>
@@ -801,14 +797,11 @@
               <td class="cert-field-val">
                 <div class="strength-pips">
                   <span class="pip pip-filled"></span>
-                  <span class="pip pip-dim"></span>
-                  <span class="pip pip-dim"></span>
-                  <span class="pip pip-empty"></span>
                   <span class="pip pip-empty"></span>
                   <span class="pip pip-empty"></span>
                   <span class="pip pip-empty"></span>
                 </div>
-                <span class="strength-label">1 / 7 &middot; domain</span>
+                <span class="strength-label">1 / 4 &middot; domain</span>
               </td>
             </tr>
           </table>
@@ -819,18 +812,17 @@
             <div>
               <div class="mandate-col-label can-label">can</div>
               <div class="mandate-tags">
-                <span class="mandate-tag can">explain_standard</span>
-                <span class="mandate-tag can">accept_submissions</span>
-                <span class="mandate-tag can">issue_certificates</span>
+                <span class="mandate-tag can">explain the standard</span>
+                <span class="mandate-tag can">receive certificate submissions</span>
+                <span class="mandate-tag can">issue signed certificates</span>
               </div>
             </div>
             <div>
               <div class="mandate-col-label cant-label">cannot</div>
               <div class="mandate-tags">
-                <span class="mandate-tag cant">sign_agreements</span>
-                <span class="mandate-tag cant">make_payments</span>
-                <span class="mandate-tag cant">share_pii</span>
-                <span class="mandate-tag cant">accept_human_inbound</span>
+                <span class="mandate-tag cant">sign agreements</span>
+                <span class="mandate-tag cant">make payments</span>
+                <span class="mandate-tag cant">share personal data</span>
               </div>
             </div>
           </div>
@@ -850,7 +842,7 @@
     <section class="section fade">
       <div class="section-label">certificate format</div>
       <p class="spec-intro">
-        The whoisthat certificate is a JSON file published at <code>/.well-known/whoisthat.json</code> on your domain. Any agent visiting your domain can read it.
+        The whoisthat certificate lives in the certificate section of your ai-ai page. Include your entity type, mandate, and endpoint. Your email domain establishes strength 1 with no additional steps.
       </p>
       <div class="code-block">
         <pre>{
@@ -883,70 +875,49 @@
           <td class="strength-level">
             <span class="pip pip-filled" style="display:inline-block;vertical-align:middle;"></span>
           </td>
-          <td class="strength-name">email / domain<span class="badge-green">default</span></td>
-          <td class="strength-desc">You sent from @yourdomain &mdash; the internet already verified this. Default for corporate agents.</td>
+          <td class="strength-name">domain / email<span class="badge-green">default</span></td>
+          <td class="strength-desc">SPF/DKIM/DMARC verify domain control. You sent from @yourdomain &mdash; the internet already verified this.</td>
         </tr>
         <tr class="strength-row">
           <td class="strength-level">
             <span class="pip pip-dim" style="display:inline-block;vertical-align:middle;"></span>
           </td>
-          <td class="strength-name">GitHub</td>
-          <td class="strength-desc">Linked GitHub account verified</td>
-        </tr>
-        <tr class="strength-row">
-          <td class="strength-level">
-            <span class="pip pip-dim" style="display:inline-block;vertical-align:middle;"></span>
-          </td>
-          <td class="strength-name">LinkedIn</td>
-          <td class="strength-desc">Profile confirmed</td>
-        </tr>
-        <tr class="strength-row">
-          <td class="strength-level">
-            <span class="pip pip-empty" style="display:inline-block;vertical-align:middle;"></span>
-          </td>
-          <td class="strength-name">email + phone</td>
-          <td class="strength-desc">Two-factor contact verified</td>
+          <td class="strength-name">linked account</td>
+          <td class="strength-desc">GitHub or LinkedIn verified and linked to the domain</td>
         </tr>
         <tr class="strength-row">
           <td class="strength-level">
             <span class="pip pip-empty" style="display:inline-block;vertical-align:middle;"></span>
           </td>
           <td class="strength-name">video / liveness</td>
-          <td class="strength-desc">Real-time identity check</td>
+          <td class="strength-desc">Real-time identity confirmed</td>
         </tr>
         <tr class="strength-row">
           <td class="strength-level">
             <span class="pip pip-empty" style="display:inline-block;vertical-align:middle;"></span>
           </td>
-          <td class="strength-name">KYC / AML</td>
-          <td class="strength-desc">Third-party verification service</td>
-        </tr>
-        <tr class="strength-row">
-          <td class="strength-level">
-            <span class="pip pip-empty" style="display:inline-block;vertical-align:middle;"></span>
-          </td>
-          <td class="strength-name">government ID</td>
-          <td class="strength-desc">Highest assurance</td>
+          <td class="strength-name">identity document</td>
+          <td class="strength-desc">KYC/AML service or government-issued ID</td>
         </tr>
       </table>
     </section>
 
     <!-- SELF-ISSUE section -->
     <section class="section fade">
-      <div class="section-label">publish your certificate</div>
+      <div class="section-label">publish your identity</div>
       <div class="body-serif">
-        <p>You don&rsquo;t need to wait for the whoisthat.ai signing service. Publish your own <code>/.well-known/whoisthat.json</code> today using <code>"issuer": "self"</code>. Your email domain already establishes strength 1 identity.</p>
-        <p>Better still: build a public ai-ai page at <code>yourdomain.com/ai-ai</code>. Make your identity and mandate visible to agents <em>and</em> humans. The <code>.well-known</code> file is for machines &mdash; the ai-ai page is for everyone.</p>
+        <p>Build a public ai-ai page at <code>yourdomain.com/ai-ai</code>. Include the whoisthat certificate in the certificate section with <code>"issuer": "self"</code>. Your email domain already establishes strength 1 &mdash; no waiting for the signing service.</p>
+        <p>A public ai-ai page is readable by agents <em>and</em> humans. It shows your intent, your mandate, and your endpoint. It is part of the network. A <code>.well-known</code> file alone is a fallback for machines that don&rsquo;t read pages.</p>
         <p>When the signing service launches, submit your certificate for countersignature. The format is already the standard.</p>
       </div>
       <div class="paths-block" style="margin-top:20px;">
         <div class="path-row">
-          <span class="path-key">via .well-known</span>
-          <span class="path-val">publish <code style="font-family:var(--mono);font-size:10px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">/.well-known/whoisthat.json</code> &middot; machines only</span>
+          <span class="path-key">ai-ai page</span>
+          <span class="path-val"><code style="font-family:var(--mono);font-size:10px;color:var(--green);background:var(--green-dim);padding:1px 5px;border-radius:2px;">yourdomain.com/ai-ai</code> &middot; readable by agents and humans <span class="badge-green">standard</span></span>
         </div>
         <div class="path-row">
-          <span class="path-key">via ai-ai page</span>
-          <span class="path-val">publish <code style="font-family:var(--mono);font-size:10px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">yourdomain.com/ai-ai</code> &middot; agents + humans <span class="badge-green">recommended</span></span>
+          <span class="path-key">.well-known</span>
+          <span class="path-val"><code style="font-family:var(--mono);font-size:10px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">/.well-known/whoisthat.json</code> &middot; machine fallback only</span>
         </div>
       </div>
     </section>
@@ -954,19 +925,19 @@
     <!-- CONTRIBUTE section -->
     <section class="section fade">
       <div class="section-label">open standard</div>
-      <p class="body-serif" style="margin-bottom:20px;">whoisthat is community-maintained. The mandate vocabulary, verification levels, and certificate format are all open for discussion.</p>
+      <p class="body-serif" style="margin-bottom:20px;">whoisthat is community-maintained. The verification levels, entity types, and certificate format are all open for discussion.</p>
       <div class="paths-block">
         <div class="path-row">
           <span class="path-key">discuss the spec</span>
           <span class="path-val"><a href="https://github.com/quietweb-org/whoisthat/discussions" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--border-hi);text-underline-offset:3px;">github.com/quietweb-org/whoisthat/discussions</a></span>
         </div>
         <div class="path-row">
-          <span class="path-key">propose a term</span>
-          <span class="path-val"><a href="https://github.com/quietweb-org/whoisthat/issues/new" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--border-hi);text-underline-offset:3px;">open a GitHub issue</a></span>
+          <span class="path-key">open an issue</span>
+          <span class="path-val"><a href="https://github.com/quietweb-org/whoisthat/issues/new" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--border-hi);text-underline-offset:3px;">github.com/quietweb-org/whoisthat/issues</a></span>
         </div>
         <div class="path-row">
-          <span class="path-key">submit an impl</span>
-          <span class="path-val"><a href="https://github.com/quietweb-org/whoisthat" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--border-hi);text-underline-offset:3px;">pull request to the repo</a></span>
+          <span class="path-key">pull request</span>
+          <span class="path-val"><a href="https://github.com/quietweb-org/whoisthat" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;text-decoration-color:var(--border-hi);text-underline-offset:3px;">github.com/quietweb-org/whoisthat</a></span>
         </div>
       </div>
     </section>
