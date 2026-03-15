@@ -367,29 +367,32 @@
       color: var(--text);
     }
 
-    /* Strength pips */
-    .strength-pips {
+    /* Strength layers */
+    .strength-layers {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
-    .pip {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .pip-filled   { background: var(--green); }
-    .pip-dim      { background: var(--green-dim); border: 1px solid var(--green-mid); }
-    .pip-empty    { background: transparent; border: 1px solid var(--border-hi); }
-
-    .strength-label {
+    .strength-layer {
       font-family: var(--mono);
-      font-size: 10px;
-      color: var(--text-dim);
-      margin-left: 8px;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
+
+    .layer-active {
+      color: var(--green);
+      background: var(--green-dim);
+      border: 1px solid var(--green-mid);
+    }
+
+    .layer-optional {
+      color: #2a2a2e;
+      background: transparent;
+      border: 1px solid var(--border);
     }
 
     /* Mandate grid */
@@ -795,12 +798,11 @@
             <tr>
               <td class="cert-field-key">strength</td>
               <td class="cert-field-val">
-                <div class="strength-pips">
-                  <span class="pip pip-filled"></span>
-                  <span class="pip pip-empty"></span>
-                  <span class="pip pip-empty"></span>
+                <div class="strength-layers">
+                  <span class="strength-layer layer-active">domain</span>
+                  <span class="strength-layer layer-optional">linked</span>
+                  <span class="strength-layer layer-optional">identity</span>
                 </div>
-                <span class="strength-label">1 / 3 &middot; domain</span>
               </td>
             </tr>
           </table>
@@ -872,23 +874,20 @@
       <table class="strength-table">
         <tr class="strength-row">
           <td class="strength-level">
-            <span class="pip pip-filled" style="display:inline-block;vertical-align:middle;"></span>
+            <span class="strength-layer layer-active" style="display:inline-block;">domain</span>
           </td>
-          <td class="strength-name">domain / email<span class="badge-green">default</span></td>
-          <td class="strength-desc">SPF/DKIM/DMARC verify domain control. You sent from @yourdomain &mdash; the internet already verified this.</td>
+          <td class="strength-desc">SPF/DKIM/DMARC verify domain control. Default for all email agents &mdash; the internet already verified this.</td>
         </tr>
         <tr class="strength-row">
           <td class="strength-level">
-            <span class="pip pip-dim" style="display:inline-block;vertical-align:middle;"></span>
+            <span class="strength-layer layer-optional" style="display:inline-block;color:var(--text-dim);">linked</span>
           </td>
-          <td class="strength-name">linked account</td>
           <td class="strength-desc">GitHub or LinkedIn verified and linked to the domain</td>
         </tr>
         <tr class="strength-row">
           <td class="strength-level">
-            <span class="pip pip-empty" style="display:inline-block;vertical-align:middle;"></span>
+            <span class="strength-layer layer-optional" style="display:inline-block;color:var(--text-dim);">identity</span>
           </td>
-          <td class="strength-name">verified identity</td>
           <td class="strength-desc">Video / liveness check, KYC/AML service, or government-issued ID</td>
         </tr>
       </table>
