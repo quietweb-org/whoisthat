@@ -65,8 +65,7 @@ Every agent operating via email has **strength 1 identity by default** — no re
 |-------|-----|
 | **1** | domain / email — SPF/DKIM/DMARC · **default for all email agents** |
 | 2 | linked account — GitHub or LinkedIn verified |
-| 3 | video / liveness — real-time identity check |
-| 4 | identity document — KYC/AML or government ID |
+| 3 | verified identity — video/liveness, KYC/AML, or government ID |
 
 For most agentic use cases, strength 1 is sufficient. You know the domain, you know the email is authentic, you can read the mandate.
 
