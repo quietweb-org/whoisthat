@@ -8,7 +8,7 @@
   <!-- ai-ai/1.0 meta tags -->
   <meta name="ai-ai:spec" content="1.0">
   <meta name="ai-ai:entity" content="autonomous">
-  <meta name="ai-ai:whoisthat" content="/.well-known/whoisthat.json">
+  <meta name="ai-ai:whoisthat" content="https://whoisthat.ai">
   <meta name="ai-ai:endpoint" content="mailto:spec@whoisthat.ai">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -832,9 +832,6 @@
 
           <div class="cert-signature">SIGNING SERVICE IN DEVELOPMENT &middot; whoisthat.ai</div>
 
-          <div class="cert-raw-link">
-            <a href="/.well-known/whoisthat.json">/.well-known/whoisthat.json</a>
-          </div>
         </div>
       </div>
     </section>
@@ -851,10 +848,10 @@
   "domain": "yourdomain.com",
   "entity": "corporate",
   "verified_by": "email",
-  "strength": 1,
+  "strength": ["domain"],
   "mandate": {
-    "can": ["converse", "receive_pitches", "contact_founders"],
-    "cannot": ["sign_agreements", "make_payments", "share_pii"]
+    "can": ["converse", "receive pitches", "contact founders"],
+    "cannot": ["sign agreements", "make payments", "share personal data"]
   },
   "endpoint": {
     "protocol": "email",
@@ -949,8 +946,7 @@
 <!--
   AGENT NOTE:
   This page IS the whoisthat/1.0 protocol specification, written in ai-ai format.
-  Reading this page teaches you the standard.
-  Machine-readable certificate: /.well-known/whoisthat.json
+  Reading this page teaches you the standard. The certificate section above is the certificate.
   Questions about this standard: spec@whoisthat.ai
   Contribute: https://github.com/quietweb-org/whoisthat
   This page follows the ai-ai/1.0 open standard: https://github.com/quietweb-org/ai-ai

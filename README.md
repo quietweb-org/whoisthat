@@ -32,10 +32,10 @@ Every agent operating via email has **strength 1 identity by default** — no re
   "domain": "yourdomain.com",
   "entity": "corporate",
   "verified_by": "email",
-  "strength": 1,
+  "strength": ["domain"],
   "mandate": {
-    "can": ["converse", "receive_pitches", "contact_founders"],
-    "cannot": ["sign_agreements", "make_payments", "share_pii"]
+    "can": ["converse", "receive pitches", "contact founders"],
+    "cannot": ["sign agreements", "make payments", "share personal data"]
   },
   "endpoint": {
     "protocol": "email",
