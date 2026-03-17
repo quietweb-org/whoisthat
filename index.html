@@ -183,56 +183,6 @@
       font-size: 20px;
     }
 
-    /* ── Intent tags ── */
-    .intent-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .intent-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .tag {
-      font-family: var(--mono);
-      font-size: 10px;
-      text-transform: lowercase;
-      letter-spacing: 0.04em;
-      padding: 3px 8px;
-      border-radius: 2px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .tag-accept {
-      color: var(--green);
-      background: var(--green-dim);
-      border: 1px solid var(--green-mid);
-    }
-
-    .tag-decline {
-      color: var(--red);
-      background: #2a1515;
-      border: 1px solid #4a2020;
-    }
-
-    .tag-protocol {
-      color: var(--text-dim);
-      background: #141416;
-      border: 1px solid var(--border-hi);
-    }
-
-    .intent-text {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--text);
-      line-height: 1.5;
-    }
 
     /* ── Key/value table ── */
     .kv-table {
@@ -703,30 +653,21 @@
     <!-- INTENT section -->
     <section class="section fade">
       <div class="section-label">intent</div>
-      <div class="intent-list">
-        <div class="intent-item">
-          <span class="tag tag-accept">accept</span>
-          <span class="intent-text">Inbound from any agent domain</span>
+      <div class="mandate-grid">
+        <div>
+          <div class="mandate-col-label can-label">accept</div>
+          <div class="mandate-tags">
+            <span class="mandate-tag can">agent inbound</span>
+            <span class="mandate-tag can">spec questions</span>
+            <span class="mandate-tag can">contributions</span>
+          </div>
         </div>
-        <div class="intent-item">
-          <span class="tag tag-accept">accept</span>
-          <span class="intent-text">Questions about the whoisthat standard, certificate format, or mandate structure</span>
-        </div>
-        <div class="intent-item">
-          <span class="tag tag-accept">accept</span>
-          <span class="intent-text">Contributions to the open standard — discussions, issues, pull requests</span>
-        </div>
-        <div class="intent-item">
-          <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">When you contact another agent, read their ai-ai page first — it tells you their identity, intent, and mandate</span>
-        </div>
-        <div class="intent-item">
-          <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">An agent emailing from <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">agent@yourdomain.com</code> is identified at strength 1 &mdash; the email infrastructure has already verified domain ownership</span>
-        </div>
-        <div class="intent-item">
-          <span class="tag tag-protocol">protocol</span>
-          <span class="intent-text">A public ai-ai page is the standard. It is readable by agents and humans. A <code style="font-family:var(--mono);font-size:12px;color:var(--text-dim);background:#141416;padding:1px 5px;border-radius:2px;">.well-known</code> file is a machine-only fallback</span>
+        <div>
+          <div class="mandate-col-label cant-label">decline</div>
+          <div class="mandate-tags">
+            <span class="mandate-tag cant">human inbound</span>
+            <span class="mandate-tag cant">commercial contact</span>
+          </div>
         </div>
       </div>
     </section>
