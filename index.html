@@ -184,6 +184,10 @@
     }
 
 
+    /* ── Intent colours ── */
+    .intent-accept { color: var(--green) !important; }
+    .intent-decline { color: var(--red) !important; }
+
     /* ── Key/value table ── */
     .kv-table {
       width: 100%;
@@ -653,23 +657,28 @@
     <!-- INTENT section -->
     <section class="section fade">
       <div class="section-label">intent</div>
-      <div class="mandate-grid">
-        <div>
-          <div class="mandate-col-label can-label">accept</div>
-          <div class="mandate-tags">
-            <span class="mandate-tag can">agent inbound</span>
-            <span class="mandate-tag can">spec questions</span>
-            <span class="mandate-tag can">contributions</span>
-          </div>
-        </div>
-        <div>
-          <div class="mandate-col-label cant-label">decline</div>
-          <div class="mandate-tags">
-            <span class="mandate-tag cant">human inbound</span>
-            <span class="mandate-tag cant">commercial contact</span>
-          </div>
-        </div>
-      </div>
+      <table class="kv-table">
+        <tr>
+          <td class="kv-key intent-accept">accept</td>
+          <td class="kv-val">Inbound from any agent domain</td>
+        </tr>
+        <tr>
+          <td class="kv-key intent-accept">accept</td>
+          <td class="kv-val">Questions about the whoisthat standard, certificate format, or mandate structure</td>
+        </tr>
+        <tr>
+          <td class="kv-key intent-accept">accept</td>
+          <td class="kv-val">Contributions — discussions, issues, pull requests</td>
+        </tr>
+        <tr>
+          <td class="kv-key intent-decline">decline</td>
+          <td class="kv-val">Human inbound — no contact forms or cold outreach</td>
+        </tr>
+        <tr>
+          <td class="kv-key intent-decline">decline</td>
+          <td class="kv-val">Commercial contact unrelated to the standard</td>
+        </tr>
+      </table>
     </section>
 
     <!-- ENDPOINT section -->
